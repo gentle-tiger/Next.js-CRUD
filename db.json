@@ -1,0 +1,29 @@
+{
+  "topics": [
+    {
+      "id": 1,
+      "title": "마슈",
+      "body": "마슈는 ..."
+    },
+    {
+      "id": 2,
+      "title": "장송의 프리렌",
+      "body": "프리렌은 ..."
+    },
+    {
+      "id": 3,
+      "title": "아앙의 전설",
+      "body": "아앙은 ..."
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
