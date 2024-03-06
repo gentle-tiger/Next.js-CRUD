@@ -1,24 +1,39 @@
 {
   "topics": [
     {
-      "id": 1,
+      "id": "1",
       "title": "마슈",
       "body": "마슈는 ..."
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "장송의 프리렌",
       "body": "프리렌은 ..."
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "아앙의 전설",
       "body": "아앙은 ..."
+    },
+    {
+      "id": "63f1",
+      "title": "",
+      "body": ""
+    },
+    {
+      "id": "be9e",
+      "title": "학교괴담",
+      "body": "학교괴담은 ...\n"
+    },
+    {
+      "id": "5c12",
+      "title": "ㅇㄴㄹ",
+      "body": "ㅇㄹㄴ"
     }
   ],
   "comments": [
     {
-      "id": 1,
+      "id": "1",
       "body": "some comment",
       "postId": 1
     }
