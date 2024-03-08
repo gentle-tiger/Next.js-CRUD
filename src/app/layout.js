@@ -1,5 +1,4 @@
 
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Control from "./Control"
 import Link from "next/link";
@@ -13,7 +12,7 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
 
-  const resp = await fetch('http://localhost:9999/topics/', { cache: 'no-store' })
+  const resp = await fetch(process.env.NEXT_PUBLIC_API_URL + '/topics/', { cache: 'no-store' })
   const topics = await resp.json();
   return (
     <html className="bg-slate-700 hv-100% text-slate-50  p-10 " >

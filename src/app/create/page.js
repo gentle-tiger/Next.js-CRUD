@@ -1,7 +1,6 @@
 'use client'
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 
 
 
@@ -24,7 +23,7 @@ export default function Create() {
                 if (title !== "" && body !== "") {
 
 
-                    fetch('http://localhost:9999/topics', {
+                    fetch(process.env.NEXT_PUBLIC_API_URL + '/topics', {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ title, body })

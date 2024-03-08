@@ -16,7 +16,7 @@ export default function Control() {
                         console.log('hi')
 
                         const options = { method: "DELETE" }
-                        fetch('http://localhost:9999/topics/' + id, options) // 해당 파람스를 가진 데이터를 삭제한다. 
+                        fetch(process.env.NEXT_PUBLIC_API_URL + '/topics/' + id, options) // 해당 파람스를 가진 데이터를 삭제한다. 
                             .then(res => res.json())
                             .then(result => {
                                 console.log("result", result);
@@ -26,7 +26,7 @@ export default function Control() {
                             )
 
                     }}></input></li>
-                <li><Link href="/update/id" className="  !text-lg">update</Link></li>
+                <li><Link href={`/update/${id}`} className="  !text-lg">update</Link></li> {/*href={`/update/${id}`}*/}
             </> : <li><Link href="/create" className="!text-lg">create</Link></li>
             }
         </ ol >

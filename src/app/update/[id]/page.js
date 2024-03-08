@@ -4,15 +4,16 @@ import { useState, useEffect } from "react";
 
 export default function Update() {
 
-    const [title, setTitle] = useState('');
-    const [body, setBody] = useState('');
+    const [title, setTitle] = useState();
+    const [body, setBody] = useState();
     const router = useRouter();
     const params = useParams();
     const id = params.id;
-    console.log(id);
-
+    console.log("id", id);
+    console.log("title", title);
+    console.log("body", body);
     useEffect(() => {
-        fetch('http://localhost:9999/topics/' + id)
+        fetch(process.env.NEXT_PUBLIC_API_URL + '/topics/' + id)
             .then(res => res.json())
             .then(result => {
                 setTitle(result.title);
@@ -21,35 +22,40 @@ export default function Update() {
     }, [])
 
     return (
-        <form className="flex flex-col gap-3 w-5/12 text-black 
-        " onSubmit={(e) => {
+        <form className="flex flex-col gap-3 w-5/12 text-black "
+            onSubmit={(e) => {
                 e.preventDefault();
-                console.log('create page!')
-
-
                 const title = e.target.title.value;
                 const body = e.target.body.value;
-                if (title !== "" && body !== "") {
-
-
-                    fetch('http://localhost:9999/topics', {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ title, body })
+                fetch(process.env.NEXT_PUBLIC_API_URL + '/topics/' + id, { // id를 붙힌 링크를 수정하는 것이기 때문에 id를 붙히나??
+                    method: "PATCH",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ title, body })
+                })
+                    .then(res => res.json())
+                    .then(result => {
+                        router.push(`/read/${result.id}`);
+                        router.refresh();
                     })
-                        .then(res => res.json())
-                        .then(result => {
-                            console.log(result);
+            }}
+        >
 
-                            router.push(`/read/${result.id}`) // result.id로 이동 
-                            router.refresh();
-                        })
-                }
-            }}>
+            <input
+                type="text"
+                name="title"
+                placeholder="title..."
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+            /><textarea
+                name="body"
+                placeholder="body..."
+                value={body}
+                onChange={(e) => setBody(e.target.value)}
 
-            <input type="text" name="title" placeholder="title..." value={title}></input>
-            <textarea name="body" placeholder="body..." value={body}></textarea>
-            <input type="submit" value="update" className="bg-sky-500 hover:bg-sky-700 uppercase"></input>
+            /><input
+                type="submit"
+                value="update"
+                className="bg-sky-500 hover:bg-sky-700 uppercase" />
         </form >
     )
 }
