@@ -26,7 +26,7 @@ export default function Update() {
             onSubmit={(e) => {
                 e.preventDefault();
                 const title = e.target.title.value;
-                const body = e.target.body.value;
+                const body = e.target.body.value;                           // 여기서 topics 다음에는 update에 보내는걸까, read에 보내는걸까
                 fetch(process.env.NEXT_PUBLIC_API_URL + '/topics/' + id, { // id를 붙힌 링크를 수정하는 것이기 때문에 id를 붙히나??
                     method: "PATCH",
                     headers: { "Content-Type": "application/json" },
@@ -52,10 +52,10 @@ export default function Update() {
                 value={body}
                 onChange={(e) => setBody(e.target.value)}
 
-            /><input
+            /><button
                 type="submit"
-                value="update"
-                className="bg-sky-500 hover:bg-sky-700 uppercase" />
+
+                className="bg-sky-500 hover:bg-sky-700 uppercase" >update</button>
         </form >
     )
 }

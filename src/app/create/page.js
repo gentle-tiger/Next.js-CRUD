@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 
 
 
-
 export default function Create() {
 
     // const [] = useState(); // react에서는 input에 value 값이 있으면 값이 입력되지 않기에 state로 관리하여 수정해야함. 
@@ -37,10 +36,10 @@ export default function Create() {
                         })
                 }
             }}>
-
-            <input type="text" name="title" placeholder="title..."></input>
+            <input type="text" name="title" placeholder="title... " className=" "></input>
             <textarea name="body" placeholder="body..."></textarea>
-            <input type="submit" value="create" className="bg-sky-500 hover:bg-sky-700 uppercase"></input>
+            <button type="submit" className="bg-sky-500 hover:bg-sky-700 uppercase">create</button>
+
         </form >
     )
 }

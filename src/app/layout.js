@@ -16,14 +16,21 @@ export default async function RootLayout({ children }) {
   const topics = await resp.json();
   return (
     <html className="bg-slate-700 hv-100% text-slate-50  p-10 " >
-      < body className=" border-2 p-10 pb-40 ">
-        <Link Link href="/" className="bg-teal-800" >
-          <h1 className="uppercase text-3xl ">Animation</h1>
-          <span className="text-slate-50 px-2 py-2 underline text-2xl">Welcom to my anibox!</span>
-        </Link >
-        <ol className="text-2xl rounded-lg bg-gray-800 my-5 drop-shadow-lg">
+      < body className=" border-2 p-10 pb-40  ">
+        <div>
+          <Link Link href="/" className="flex group " >
+            <h1 className="relative uppercase text-3xl animate-pinghover ">Animation</h1>
+            <p className="absolute w-1 h-1 bg-sky-400 rounded-xl group-hover:animate-ping"></p>
+            <p className="absolute w-1 h-1 bg-sky-500 rounded-xl " ></p>
+          </Link >
+          <span className="text-slate-50 px-2 py-2 underline text-1xl  ">Welcom to my anibox!</span>
+        </div>
+        <ol className="text-2xl rounded-lg bg-gray-800 drop-shadow-lg my-5 py-5 ">
           {topics.map(topic => {
-            return <li className="pl-5 pb-2 " key={topic.id}><Link href={`/read/${topic.id}`}>{topic.title}</Link></li>
+            return <li className="pl-5 group "
+              key={topic.id}><Link href={`/read/${topic.id}`}
+                className="py-1 px-1 rounded-lg transition ease-in group-hover:text-black group-hover:font-black group-hover:bg-gray-300">{topic.title}</Link></li>
+
           })}
 
         </ol>
